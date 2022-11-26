@@ -39,7 +39,7 @@ const StyledNav = styled.div`
   .container {
     display: flex;
     justify-content: space-between;
-    width: 1200px;
+    width: 1000px;
     height: 100%;
     margin: 0 auto;
     padding: 0 16px;
