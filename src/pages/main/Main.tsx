@@ -1,14 +1,21 @@
-import Nav from '../../components/Nav';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import styled from 'styled-components';
+import Nav from '../../components/Nav';
+import SelectMenu from './components/SelectMenu';
+import { selectMenuList } from '../../utils/menuList';
 
 const Main = () => {
   return (
     <Container>
       <Nav />
       <div className='sliderContainer'>
-        <FaChevronLeft size='2em' color='#B7B7B7' className='chevron' />
-        <FaChevronRight size='2em' color='#B7B7B7' className='chevron' />
+        <FaChevronLeft size='2em' className='chevron' />
+        <FaChevronRight size='2em' className='chevron' />
+      </div>
+      <div className='selectMenuContainer'>
+        {selectMenuList.map((el) => (
+          <SelectMenu key={el.id} title={el.title} icon={el.icon} />
+        ))}
       </div>
     </Container>
   );
@@ -25,9 +32,11 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    background-color: #d2d2d2;
+    background-color: ${({ theme }) => theme.grey4};
 
     .chevron {
+      color: ${({ theme }) => theme.grey6};
+
       &:first-of-type {
         margin-left: 10px;
       }
@@ -36,5 +45,14 @@ const Container = styled.div`
         margin-right: 10px;
       }
     }
+  }
+
+  .selectMenuContainer {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px auto;
   }
 `;

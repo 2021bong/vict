@@ -7,6 +7,8 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+    font-size: 14px;
+    color: #555;
   }
 
   ul, ol, li {

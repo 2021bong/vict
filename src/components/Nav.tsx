@@ -50,7 +50,6 @@ const StyledNav = styled.div`
       justify-content: space-between;
       align-items: center;
       width: 40%;
-      color: #fff;
       font-weight: 600;
     }
 
@@ -59,16 +58,15 @@ const StyledNav = styled.div`
       width: 10%;
       justify-content: space-between;
       align-items: center;
-      color: #fff;
       font-weight: 500;
     }
 
     .page {
+      color: #fff;
+
       &:active {
         color: #999;
       }
     }
   }
 `;
-
-const MenuLi = styled.li``;
