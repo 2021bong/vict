@@ -39,9 +39,11 @@ const StyledNav = styled.div`
   .container {
     display: flex;
     justify-content: space-between;
-    width: 1280px;
+    width: 1200px;
     height: 100%;
     margin: 0 auto;
+    padding: 0 16px;
+    font-size: 14px;
 
     .menu-container {
       display: flex;
