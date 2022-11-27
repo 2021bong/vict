@@ -12,9 +12,7 @@ const SelectMenu = ({ title, icon }: SelectMenuProps) => {
 
 export default SelectMenu;
 
-const Container = styled.div`
-  width: 70px;
-  height: 70px;
+const Container = styled.li`
   font-size: 13px;
   text-align: center;
 
@@ -22,8 +20,8 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: inherit;
-    height: inherit;
+    width: 70px;
+    height: 70px;
     margin-bottom: 10px;
     border-radius: 50%;
     background-color: ${({ theme }) => theme.grey1};

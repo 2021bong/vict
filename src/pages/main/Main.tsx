@@ -2,7 +2,10 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import styled from 'styled-components';
 import Nav from '../../components/Nav';
 import SelectMenu from './components/SelectMenu';
+import BandAd from './components/BandAd';
 import { selectMenuList } from '../../utils/menuList';
+import { contentList } from '../../utils/contentList';
+import ThumbList from './components/ThumbList';
 
 const Main = () => {
   return (
@@ -12,11 +15,25 @@ const Main = () => {
         <FaChevronLeft size='2em' className='chevron' />
         <FaChevronRight size='2em' className='chevron' />
       </div>
-      <div className='selectMenuContainer'>
+      <ul className='selectMenuContainer'>
         {selectMenuList.map((el) => (
           <SelectMenu key={el.id} title={el.title} icon={el.icon} />
         ))}
-      </div>
+      </ul>
+      <BandAd
+        text='<돈만 주시면 시키시는 거 다 합니다> 출판 기념 EVENT!'
+        color='#F2C303'
+      />
+      {contentList.map((el) => (
+        <ThumbList key={el.id} title={el.containerTitle} content={el.content} />
+      ))}
+      <BandAd
+        text={`'차갑지만 내 여자에겐 따뜻하겠지...' 북부 공작을 좋아하는 사람들을 위한 기획전`}
+        color='#fc8b9a'
+      />
+      {contentList.map((el) => (
+        <ThumbList key={el.id} title={el.containerTitle} content={el.content} />
+      ))}
     </Container>
   );
 };
@@ -53,6 +70,6 @@ const Container = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 20px auto;
+    margin: 30px auto;
   }
 `;
