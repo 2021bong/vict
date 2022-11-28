@@ -1,6 +1,5 @@
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import styled from 'styled-components';
-import Nav from '../../components/Nav';
 import SelectMenu from './components/SelectMenu';
 import BandAd from './components/BandAd';
 import { selectMenuList } from '../../utils/menuList';
@@ -10,7 +9,6 @@ import ThumbList from './components/ThumbList';
 const Main = () => {
   return (
     <Container>
-      <Nav />
       <div className='sliderContainer'>
         <FaChevronLeft size='2em' className='chevron' />
         <FaChevronRight size='2em' className='chevron' />

@@ -30,7 +30,7 @@ const Nav = () => {
 
 export default Nav;
 
-const StyledNav = styled.div`
+const StyledNav = styled.nav`
   display: flex;
   width: 100%;
   height: 3.5rem;

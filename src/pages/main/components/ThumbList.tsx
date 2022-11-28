@@ -66,7 +66,7 @@ const Container = styled.section`
 
     .cardBox {
       width: 180px;
-      margin-right: 5px;
+      margin-right: 10px;
       font-size: 14px;
 
       .img {
