@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MouseEvent, useEffect, useRef, useState } from 'react';
+import { SlideBoxType } from '../../../utils/interface';
 
 const imgUrl = [
   {
@@ -46,17 +47,17 @@ const Slide = () => {
       })
       .slice(1, imgUrl.length - 1)
   );
-  const [sec, setSec] = useState(5000);
+  const [transition, setTransition] = useState(true);
 
   const deleteTransition = () => {
     if (slideRef.current) {
-      slideRef.current.style.transition = '';
+      setTransition(false);
     }
   };
 
   const addTransition = () => {
     if (slideRef.current) {
-      slideRef.current.style.transition = 'transform 0.3s ease-in';
+      setTransition(true);
     }
   };
 
@@ -92,7 +93,6 @@ const Slide = () => {
   };
 
   useEffect(() => {
-    if (sec < 5000) setSec(5000);
     setSlideNav((prev) =>
       prev.map((el) =>
         +el.id === (slidePx / 1000) * -1 + 1
@@ -107,7 +107,6 @@ const Slide = () => {
           +el.id === 2 ? { ...el, selected: true } : { ...el, selected: false }
         )
       );
-      if (slidePx === slideCount * -1000) setSec(500);
     }
 
     if (slidePx === 0) {
@@ -120,15 +119,18 @@ const Slide = () => {
   }, [slidePx]);
 
   useEffect(() => {
-    const autoSlideTime = setInterval(() => {
-      let newSlide = slidePx - 1000;
-      addTransition();
-      if (newSlide < slideCount * -1000) {
-        newSlide = -1000;
-        deleteTransition();
-      }
-      setSlidePx(newSlide);
-    }, sec);
+    const autoSlideTime = setInterval(
+      () => {
+        let newSlide = slidePx - 1000;
+        addTransition();
+        if (newSlide < slideCount * -1000) {
+          newSlide = -1000;
+          deleteTransition();
+        }
+        setSlidePx(newSlide);
+      },
+      transition ? 5000 : 0
+    );
     return () => {
       clearInterval(autoSlideTime);
     };
@@ -148,11 +150,7 @@ const Slide = () => {
         id='right'
         onClick={moveSildeToChevron}
       />
-      <SlideBox
-        ref={slideRef}
-        slide={slidePx}
-        style={{ transition: 'transform 0.3s ease-in' }}
-      >
+      <SlideBox ref={slideRef} slide={slidePx} transition={transition}>
         {imgUrl.map((el) => (
           <SlideImg key={el.id} url={el.url}>
             <h5 className='alt'>{el.title}</h5>
@@ -197,13 +195,14 @@ const SlideImg = styled.li`
   }
 `;
 
-const SlideBox = styled.ul`
+const SlideBox = styled.ul<SlideBoxType>`
   position: relative;
   display: flex;
   width: inherit;
   height: inherit;
-  transform: ${({ slide }: { slide: number }) => `translateX(${slide}px);`};
-  /* transition: transform 0.3s ease-in; */
+  transform: ${({ slide }) => `translateX(${slide}px)`};
+  transition: ${({ transition }) =>
+    transition ? 'transform 0.3s ease-in' : ''};
 `;
 
 const Container = styled.div`
@@ -224,6 +223,10 @@ const Container = styled.div`
     opacity: 80%;
     z-index: 1;
     cursor: pointer;
+
+    &:active {
+      opacity: 100%;
+    }
   }
 
   #left {
@@ -237,7 +240,7 @@ const Container = styled.div`
   .slideNavContainer {
     position: absolute;
     display: flex;
-    left: 50%;
+    left: calc(50% - 47px);
     bottom: 1rem;
 
     .slideNav {

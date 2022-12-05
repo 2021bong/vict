@@ -44,3 +44,8 @@ export interface MiniCardProps {
 export interface CardListContainerType {
   type: CardType;
 }
+
+export interface SlideBoxType {
+  slide: number;
+  transition: boolean;
+}
