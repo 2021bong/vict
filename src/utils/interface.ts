@@ -16,13 +16,6 @@ export interface StyledBandAdProps {
 }
 
 export interface ThumbCardProps {
-  title: string;
-  author: string;
-  score: number;
-  review: number;
-}
-
-export interface ThumbCardProps {
   id: number;
   title: string;
   author: string;
@@ -30,8 +23,24 @@ export interface ThumbCardProps {
   review: number;
 }
 
-export interface ThumbListProps {
+type CardType = 'thumb' | 'mini';
+
+export interface CardListProps {
   id?: string;
   title: string;
   content: ThumbCardProps[];
+  type: CardType;
+}
+
+export interface MiniCardProps {
+  id: number;
+  rank: number;
+  title: string;
+  author: string;
+  score: number;
+  review: number;
+}
+
+export interface CardListContainerType {
+  type: CardType;
 }

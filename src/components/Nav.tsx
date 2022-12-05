@@ -16,7 +16,9 @@ const Nav = () => {
       <div className='container'>
         <ul className='menu-container'>
           {menu.map((m) => (
-            <li className='page'>{m.content}</li>
+            <li key={m.id} className='page'>
+              {m.content}
+            </li>
           ))}
         </ul>
         <ul className='info-container'>

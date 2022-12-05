@@ -2,7 +2,11 @@ import styled from 'styled-components';
 import { BandAdProps, StyledBandAdProps } from '../../../utils/interface';
 
 const BandAd = ({ text, color }: BandAdProps) => {
-  return <Container bgColor={color}>{text}</Container>;
+  return (
+    <Container bgColor={color}>
+      <b>{text}</b>
+    </Container>
+  );
 };
 
 export default BandAd;
