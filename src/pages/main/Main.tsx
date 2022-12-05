@@ -1,4 +1,3 @@
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import styled from 'styled-components';
 import SelectMenu from './components/SelectMenu';
 import BandAd from './components/BandAd';
@@ -6,14 +5,12 @@ import { selectMenuList } from '../../utils/menuList';
 import { contentList } from '../../utils/contentList';
 import { rankList } from '../../utils/rankList';
 import CardList from './components/CardList';
+import Slide from './components/Slide';
 
 const Main = () => {
   return (
     <Container>
-      <div className='sliderContainer'>
-        <FaChevronLeft size='2em' className='chevron' />
-        <FaChevronRight size='2em' className='chevron' />
-      </div>
+      <Slide />
       <ul className='selectMenuContainer'>
         {selectMenuList.map((el) => (
           <SelectMenu key={el.id} title={el.title} icon={el.icon} />
@@ -43,29 +40,6 @@ const Main = () => {
 export default Main;
 
 const Container = styled.div`
-  .sliderContainer {
-    width: 100%;
-    max-width: 1000px;
-    height: 35rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    background-color: ${({ theme }) => theme.grey4};
-
-    .chevron {
-      color: ${({ theme }) => theme.grey6};
-
-      &:first-of-type {
-        margin-left: 10px;
-      }
-
-      &:last-of-type {
-        margin-right: 10px;
-      }
-    }
-  }
-
   .selectMenuContainer {
     width: 100%;
     max-width: 1000px;
