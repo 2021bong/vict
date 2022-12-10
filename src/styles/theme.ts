@@ -1,5 +1,6 @@
 export const mainPurple = '#e439f0';
 export const mainBlue = '#4331e0';
+export const mainGradient = 'linear-gradient(to right, #e439f0, #4331e0);';
 
 export const text = '#888';
 export const footerBg = '#3A3A3A';

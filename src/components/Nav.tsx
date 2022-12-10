@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Nav = () => {
@@ -22,8 +23,12 @@ const Nav = () => {
           ))}
         </ul>
         <ul className='info-container'>
-          <li className='page'>로그인</li>
-          <li className='page'>회원가입</li>
+          <Link to='/login'>
+            <li className='page'>로그인</li>
+          </Link>
+          <Link to='/signup'>
+            <li className='page'>회원가입</li>
+          </Link>
         </ul>
       </div>
     </StyledNav>
